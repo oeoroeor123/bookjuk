@@ -1,0 +1,139 @@
+.top-layout {
+  vertical-align: middle;
+  align-content: center;
+}
+.back-btn {
+  float: right;
+}
+
+
+/* 주문 상세보기 버튼 */
+.order-detail-btn {
+  text-decoration: none;
+  position: relative;
+  top: -3px;
+}
+
+/* 공통 클릭 가능 요소 */
+.clickable {
+  cursor: pointer;
+}
+
+/* 주문 상품 이미지 */
+.order-product-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: auto;
+}
+
+/* 리뷰 버튼 컨테이너 */
+.review-btn-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* 모달 오버레이 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* 모달 컨텐츠 */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* 취소 요청 모달 내 취소 상품 목록 컨테이너 */
+.cancel-items-container {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+/* 취소 요청 모달 내 각 상품 항목 */
+.cancel-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 취소 요청 모달 내 입력 필드 영역 */
+.cancel-field {
+  margin-bottom: 15px;
+}
+
+/* 취소 사유 선택 셀렉트 박스 */
+.cancel-select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+/* 취소 사유 작성 텍스트에리어 */
+.cancel-textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  resize: vertical;
+}
+
+/* 취소 요청 모달 내 버튼 그룹 */
+.cancel-btn-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 취소 버튼 우측 여백 */
+.cancel-btn-margin {
+  margin-right: 10px;
+}
+
+/* 에러 메시지 모달 */
+.error-modal {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 1000;
+  width: 250px;
+  text-align: center;
+}
+
+/* Custom Checkbox Styles */
+.custom-checkbox {
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #6c757d;
+  border-radius: 0.25em;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+.custom-checkbox:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}

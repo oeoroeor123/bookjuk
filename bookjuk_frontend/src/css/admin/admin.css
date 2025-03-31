@@ -1,0 +1,25 @@
+/* 관리자 페이지 CSS */
+.admin-container {
+  min-width: 800px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.admin-menu {
+  font-size: 12px;
+  font-weight: 700;
+}
+.admin-left {
+  width: 20%;
+  min-width: 120px;
+  margin-top: 20px;
+
+  flex-shrink: 0;
+}
+.admin-right {
+  width: 80%;
+  min-width: 300px;
+  flex-shrink: 0;
+}
+.active-menu {
+  color: rgb(127, 159, 255) !important;
+}

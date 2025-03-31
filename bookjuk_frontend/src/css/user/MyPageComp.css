@@ -1,0 +1,26 @@
+/*마이페이지 css*/
+.user-container {
+  min-width: 800px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.user-menu {
+  width: 100%;
+  padding: 0 20px 0 0;
+  height: 30px;
+  font-size: 18px;
+  /*list-style: none;*/
+}
+.user-left {
+  width: 25%;
+  border-right: 2px solid #ddd;
+  
+  min-width: 120px;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+.user-right {
+  width: 80%;
+  min-width: 300px;
+  flex-shrink: 0;
+}

@@ -1,0 +1,101 @@
+/* 메인 - 추천도서 */
+.slide {
+  width: 580px;
+  min-width: 530px;
+  height: 300px;
+  padding: 0 30px;
+  overflow: hidden;
+}
+.main-product-left,
+.main-product-right {
+  position: relative;
+  height: 300px !important;
+}
+.main-product-left {
+  float: left;
+  border-radius: 10px;
+  width: 200px;
+}
+.main-product-right {
+  float: right;
+  width: 300px;
+  /* margin-left: 10px; */
+  align-content: center;
+}
+.main-product-name {
+  font-size: 24px;
+  font-weight: 700;
+}
+.main-product-author-name {
+  margin-left: 5px;
+  font-size: 12px;
+}
+.main-product-description,
+.main-product-info,
+.main-product-publication-date,
+.main-product-price {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+}
+.d-block {
+  height: 300px;
+  object-fit: cover;
+}
+/* 슬라이드 버튼*/
+.carousel-control-prev {
+  /* position: relative;
+  float: left; */
+  position: absolute !important;
+  left: -30px;
+}
+
+.carousel-control-next {
+  /* position: relative;
+  float: right; */
+  position: absolute !important;
+  right: -30px;
+}
+/* 메인 - 신간 목록 */
+.main-sub-title {
+  display: block;
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.main-product-list {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+.main-product-item {
+  margin: 0 10px;
+  padding: 0 10px;
+  width: 150px !important;
+  height: 250px !important;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+/* 메인 - 도서 목록 썸네일 */
+.main-thumbnail {
+  margin-top: 10px;
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+}
+/* 메인 - 도서 목록 제목 */
+.main-book-title {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+/* 메인 - 도서 목록 - 설명*/
+.main-desc {
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

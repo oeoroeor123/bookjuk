@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bookjuk.admin.mapper.ILoginLogMapper">
+
+  <resultMap type="LoginLogDto" id="loginLogMap">
+    <id column="login_log_id" property="loginLogId"/>
+    <result column="login_dt" property="loginDt"/>
+    <result column="login_browser" property="loginBrowser"/>
+    <result column="ip_addr" property="ipAddr"/>
+    <association javaType="AdminUserDto" property="user">
+      <id column="user_id" property="userId"/>
+      <result column="user_email" property="userEmail"/>
+      <result column="user_name" property="userName"/>
+      <result column="user_birthdate" property="userBirthdate"/>
+      <result column="user_phone" property="userPhone"/>
+      <result column="user_nickname" property="userNickname"/>
+      <result column="profile_img" property="profileImg"/>
+      <result column="profile_img_ori_name" property="profileImgOriName"/>
+      <result column="profile_img_sys_name" property="profileImgSysName"/>
+      <result column="session_id" property="sessionId"/>
+      <result column="user_role" property="userRole"/>
+      <result column="create_dt" property="createDt"/>
+      <result column="change_dt" property="changeDt"/>
+    </association>
+  </resultMap>
+  
+  <!-- 로그인 로그 검색 결과 -->
+  <select id="selectLoginLogSearchList" parameterType="map" resultMap="loginLogMap">
+    SELECT *
+      FROM tbl_login_log l
+      LEFT JOIN tbl_user u ON l.user_id = u.user_id
+    <where>
+        <if test="search == 'name'">u.user_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'nickname'">AND u.user_nickname LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'email'">AND u.user_email LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="startDt != '' and endDt != ''">AND login_dt BETWEEN #{startDt} AND #{endDt}</if>
+        <if test="search == 'total'">
+          AND (
+	          u.user_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR u.user_nickname LIKE CONCAT('%', #{keyword}, '%')
+	          OR u.user_email LIKE CONCAT('%', #{keyword}, '%')
+          )
+        </if>
+    </where>         
+    ORDER BY l.login_dt ${sort}
+       LIMIT #{offset}, #{display}
+  </select>
+  
+  <!-- 로그인 로그 검색 결과 갯수 -->
+  <select id="selectLoginLogSearchListCount" parameterType="map" resultType="int">
+    SELECT COUNT(*)
+      FROM tbl_login_log l
+      LEFT JOIN tbl_user u ON s.user_id = u.user_id
+    <where>
+        <if test="search == 'name'">u.user_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'nickname'">AND u.user_nickname LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'email'">AND u.user_email LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="startDt != '' and endDt != ''">AND login_dt BETWEEN #{startDt} AND #{endDt}</if>
+        <if test="search == 'total'">
+          AND (
+	          u.user_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR u.user_nickname LIKE CONCAT('%', #{keyword}, '%')
+	          OR u.user_email LIKE CONCAT('%', #{keyword}, '%')
+          )
+        </if>
+    </where>       
+  </select>
+
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bookjuk.admin.mapper.IAdminSecondHandMapper">
+
+  <resultMap type="AdminSecondhandDto" id="adminSecondhandMap">
+    <id column="secondhand_id" property="secondhandId"/>
+    <result column="secondhand_name" property="secondhandName"/>
+    <result column="secondhand_image" property="secondhandImage"/>
+    <result column="secondhand_description" property="secondhandDescription"/>
+    <result column="secondhand_price" property="secondhandPrice"/>
+    <result column="secondhand_date" property="secondhandDate"/>
+    <result column="create_dt" property="createDt"/>
+    <result column="sales_yn" property="salesYn"/>
+    <association javaType="AdminUserDto" property="user">
+      <id column="user_id" property="userId"/>
+      <result column="user_email" property="userEmail"/>
+      <result column="user_name" property="userName"/>
+      <result column="user_birthdate" property="userBirthdate"/>
+      <result column="user_phone" property="userPhone"/>
+      <result column="user_nickname" property="userNickname"/>
+      <result column="profile_img" property="profileImg"/>
+      <result column="profile_img_ori_name" property="profileImgOriName"/>
+      <result column="profile_img_sys_name" property="profileImgSysName"/>
+      <result column="session_id" property="sessionId"/>
+      <result column="user_role" property="userRole"/>
+      <result column="create_dt" property="createDt"/>
+      <result column="change_dt" property="changeDt"/>
+    </association>
+    <association javaType="AdminGenreDto" property="genre">
+      <id column="genre_id" property="genreId"/>
+      <result column="genre_name" property="genreName"/>
+    </association>
+    <association javaType="AdminPublisherDto" property="publisher">
+      <id column="publisher_id" property="publisherId"/>
+      <result column="publisher_name" property="publisherName"/>
+      <result column="website" property="website"/>
+    </association>
+    <association javaType="AdminAuthorDto" property="author">
+      <id column="author_id" property="authorId"/>
+      <result column="author_name" property="authorName"/>
+      <result column="author_birth" property="authorBirth"/>
+      <result column="biography" property="biography"/>
+      <result column="major_works" property="majorWorks"/>
+    </association>
+  </resultMap>
+  
+  <!-- 중고상품 검색 결과 -->
+  <select id="selectSecondhandSearchList" parameterType="map" resultMap="adminSecondhandMap">
+    SELECT *
+      FROM tbl_secondhand s
+      LEFT JOIN tbl_user u ON s.user_id = u.user_id
+      JOIN tbl_genre g ON s.genre_id = g.genre_id
+      JOIN tbl_author a ON s.author_id = a.author_id
+    <where>
+        <if test="search == 'secondhand'">s.secondhand_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'genre'">AND g.genre_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'author'">AND a.author_name LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'user'">AND u.user_name LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'total'">
+          AND (
+	          s.secondhand_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR g.genre_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR a.author_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR u.user_name LIKE CONCAT('%', #{keyword}, '%')
+          )
+        </if>
+    </where>        
+    ORDER BY s.secondhand_id ${sort}
+       LIMIT #{offset}, #{display}
+  </select>
+  
+  <!-- 중고상품 검색 결과 갯수 -->
+  <select id="selectSecondhandSearchListCount" parameterType="map" resultType="int">
+    SELECT COUNT(*)
+      FROM tbl_secondhand s
+      LEFT JOIN tbl_user u ON s.user_id = u.user_id
+      JOIN tbl_genre g ON s.genre_id = g.genre_id
+      JOIN tbl_author a ON s.author_id = a.author_id
+    <where>
+        <if test="search == 'secondhand'">s.secondhand_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'genre'">AND g.genre_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'author'">AND a.author_name LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'user'">AND u.user_name LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'total'">
+          AND (
+	          s.secondhand_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR g.genre_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR a.author_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR u.user_name LIKE CONCAT('%', #{keyword}, '%')
+          )
+        </if>
+    </where>        
+  </select>
+
+</mapper>

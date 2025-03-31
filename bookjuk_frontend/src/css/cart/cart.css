@@ -1,0 +1,83 @@
+/* Custom Checkbox Styles */
+.custom-checkbox {
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #6c757d;
+  border-radius: 0.25em;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+.custom-checkbox:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Cart Header (전체 선택 영역) */
+.cart-header {
+  padding: 10px;
+}
+
+/* Cart Content 영역 */
+.cart-content {
+  display: flex;
+  gap: 20px;
+}
+
+/* 좌측 상품 목록 영역 */
+.cart-items {
+  flex: 8;
+}
+
+/* 우측 선택된 상품 및 주문 요약 영역 */
+.cart-summary {
+  flex: 2;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* 개별 장바구니 아이템 */
+.cart-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+/* 품절 상품에 적용 (판매중단) */
+.cart-item.sold-out {
+  background-color: #fff0f0;
+}
+
+/* 상품 이미지 컨테이너 */
+.product-image-container {
+  height: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* 상품 이미지 */
+.product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* 클릭 가능한 요소 (상품명, 설명 등) */
+.clickable {
+  cursor: pointer;
+}
+
+/* 수량 입력란 */
+.quantity-input {
+  width: 80px;
+}
+
+/* 선택된 상품 리스트 컨테이너 */
+.selected-items {
+  height: 200px;
+  overflow-y: auto;
+}

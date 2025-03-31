@@ -1,0 +1,19 @@
+.product-table {
+  table-layout: fixed;  
+ 
+}
+.product-table td,
+.product-table th {
+  white-space: nowrap;    /* 강제 한 줄 처리 */
+  overflow: hidden;       /* 넘치는 내용 숨김 */
+  text-overflow: ellipsis; /* 말줄임표(...) 표시 */
+  font-size: 12px;
+}
+
+/* Quill 콘텐츠 내 모든 이미지에 고정 크기 적용 */
+.quill-content img {
+  max-width: 600px !important;  /* 원하는 최대 너비 */
+  height: auto !important;      /* 비율 유지 */
+  display: block !important;
+  margin: 10px auto !important; /* 가운데 정렬 */
+}

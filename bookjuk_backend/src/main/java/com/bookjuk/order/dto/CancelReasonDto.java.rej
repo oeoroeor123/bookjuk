@@ -1,0 +1,15 @@
+diff a/src/main/java/com/bookjuk/order/dto/CancelReasonDto.java b/src/main/java/com/bookjuk/order/dto/CancelReasonDto.java	(rejected hunks)
+@@ -21,11 +21,11 @@
+     // 취소 사유 고유 ID
+     private Integer cancelReasonId;
+     // 취소 정의 고유 ID (tbl_cancel_definition과 연계)
+-    private Integer cancelDefinitionId;
++    private CancelDefinition cancelDefinition;
+     // 취소 요청이 발생한 주문 상세 항목 ID
+     private OrderItem orderItem;
+     // 취소 요청 상품 수량
+-    private int quantity;
++    private Integer quantity;
+     // 취소 사유 상세 설명
+     private String cancelReason;
+     // 거부, 반려에 대한 상세 설명

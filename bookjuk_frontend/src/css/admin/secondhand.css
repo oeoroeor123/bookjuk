@@ -1,0 +1,22 @@
+/* 관리자 - 중고상품 CSS */
+th,
+.center {
+  text-align: center;
+  align-content: center;
+}
+.price {
+  text-align: right;
+}
+.list-table {
+  /* display: table-cell;
+  min-height: calc(100vh - 5rem - 220px - 200px); */
+  /* white-space: nowrap;
+  word-break: keep-all; */
+}
+.input-search {
+  /* position: absolute;
+  bottom: 150px; */
+}
+select {
+  font-size: 12px;
+}

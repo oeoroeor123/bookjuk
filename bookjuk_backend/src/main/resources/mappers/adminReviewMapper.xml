@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bookjuk.admin.mapper.IAdminReviewMapper">
+
+  <resultMap type="AdminReviewDto" id="adminReviewMap">
+    <id column="review_id" property="reviewId"/>
+    <result column="order_item_id" property="orderItemId"/>
+    <result column="review_rating" property="reviewRating"/>
+    <result column="review_comment" property="reviewComment"/>
+    <result column="create_dt" property="createDt"/>
+    <association javaType="AdminUserDto" property="user">
+      <id column="user_id" property="userId"/>
+      <result column="user_email" property="userEmail"/>
+      <result column="user_name" property="userName"/>
+      <result column="user_birthdate" property="userBirthdate"/>
+      <result column="user_phone" property="userPhone"/>
+      <result column="user_nickname" property="userNickname"/>
+      <result column="profile_img" property="profileImg"/>
+      <result column="profile_img_ori_name" property="profileImgOriName"/>
+      <result column="profile_img_sys_name" property="profileImgSysName"/>
+      <result column="session_id" property="sessionId"/>
+      <result column="user_role" property="userRole"/>
+      <result column="create_dt" property="createDt"/>
+      <result column="change_dt" property="changeDt"/>
+    </association>
+    <association javaType="AdminProductDto" property="product">
+      <id column="product_id" property="productId"/>
+      <result column="product_name" property="productName"/>
+      <result column="product_image" property="productImage"/>
+      <result column="description" property="description"/>
+      <result column="product_price" property="productPrice"/>
+      <result column="publication_date" property="publicationDate"/>
+      <result column="stock" property="stock"/>
+      <result column="totalPages" property="totalPages"/>
+      <result column="create_dt" property="createDt"/>
+      <result column="sales_yn" property="salesYn"/>
+      <association javaType="AdminGenreDto" property="genre">
+        <id column="genre_id" property="genreId"/>
+        <result column="genre_name" property="genreName"/>
+      </association>
+      <association javaType="AdminPublisherDto" property="publisher">
+        <id column="publisher_id" property="publisherId"/>
+        <result column="publisher_name" property="publisherName"/>
+        <result column="website" property="website"/>
+      </association>
+      <association javaType="AdminAuthorDto" property="author">
+        <id column="author_id" property="authorId"/>
+        <result column="author_name" property="authorName"/>
+        <result column="author_birth" property="authorBirth"/>
+        <result column="biography" property="biography"/>
+        <result column="major_works" property="majorWorks"/>
+      </association>
+    </association>
+  </resultMap>
+  
+  <!-- 리뷰 검색 결과 -->
+  <select id="selectReviewSearchList" parameterType="map" resultMap="adminReviewMap">
+    SELECT *
+      FROM tbl_review r
+      LEFT JOIN tbl_user u ON r.user_id = u.user_id
+      JOIN tbl_product p ON r.product_id = p.product_id
+      JOIN tbl_genre g ON p.genre_id = g.genre_id
+      JOIN tbl_author a ON p.author_id = a.author_id
+    <where>
+        <if test="search == 'product'">p.product_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'author'">AND a.author_name LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'genre'">AND g.genre_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'user'">AND u.user_nickname LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'content'">AND r.review_comment LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'total'">
+          p.product_name LIKE CONCAT('%', #{keyword}, '%')
+          OR a.author_name LIKE CONCAT('%', #{keyword}, '%')
+          OR g.genre_name LIKE CONCAT('%', #{keyword}, '%')
+          OR u.user_nickname LIKE CONCAT('%', #{keyword}, '%')
+          OR r.review_comment LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+    </where>        
+    ORDER BY r.review_id ${sort}
+       LIMIT #{offset}, #{display}
+  </select>
+  
+  <!-- 리뷰 검색 결과 갯수 -->
+  <select id="selectReviewSearchListCount" parameterType="map" resultType="int">
+    SELECT COUNT(*)
+      FROM tbl_review r
+      LEFT JOIN tbl_user u ON r.user_id = u.user_id
+      JOIN tbl_product p ON r.product_id = p.product_id
+      JOIN tbl_genre g ON p.genre_id = g.genre_id
+      JOIN tbl_author a ON p.author_id = a.author_id
+    <where>
+        <if test="search == 'product'">p.product_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'author'">AND a.author_name LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'genre'">AND g.genre_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'user'">AND u.user_nickname LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'content'">AND r.review_comment LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="search == 'total'">
+          p.product_name LIKE CONCAT('%', #{keyword}, '%')
+          OR a.author_name LIKE CONCAT('%', #{keyword}, '%')
+          OR g.genre_name LIKE CONCAT('%', #{keyword}, '%')
+          OR u.user_nickname LIKE CONCAT('%', #{keyword}, '%')
+          OR r.review_comment LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+    </where>        
+  </select>
+
+</mapper>

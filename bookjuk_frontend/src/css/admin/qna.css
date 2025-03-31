@@ -1,0 +1,67 @@
+/* Q&A, 상품 문의 상세 CSS */
+
+.box {
+  /* display: flex; */
+  /* position: relative; */
+  box-sizing: border-box;
+}
+.question {
+  min-width: 500px;
+  max-width: 80%;
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 10px;
+  padding: 20px;
+  width: 55%;
+  float: left;
+}
+.answer {
+  min-width: 500px;
+  max-width: 80%;
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 10px;
+  padding: 20px;
+  width: 55%;
+  float: right;
+  margin-top: 10px;
+  background-color: rgb(241, 241, 241);
+  textarea {
+    border: none;
+    resize: none;
+    height: 100px;
+  }
+}
+.answerBtn {
+  float: right;
+  font-size: 12px;
+  margin-top: 10px;
+  border: none;
+}
+.listBtn {
+  clear: both;
+  display: block;
+}
+.question-title,
+.answer-content {
+  text-align: left;
+}
+.question-writer,
+.answer-writer {
+  text-align: right;
+}
+.bold {
+  font-weight: 900;
+}
+.productName {
+  text-align: center;
+  align-content: center;
+}
+.productImg {
+  text-align: center;
+  img {
+    max-height: 200px;
+  }
+}
+.date {
+  font-size: 12px;
+  text-align: end;
+}

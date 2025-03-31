@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bookjuk.admin.mapper.IDeleteLogMapper">
+  
+  <!-- 탈퇴 로그 검색 결과 -->
+  <select id="selectDeleteLogSearchList" parameterType="map">
+    SELECT *
+      FROM tbl_delete_user_log
+    <where>
+        <if test="search == 'name'">user_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'nickname'">AND user_nickname LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'email'">AND user_email LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="startDt != '' and endDt != ''">AND delete_dt BETWEEN #{startDt} AND #{endDt}</if>
+        <if test="search == 'total'">
+          AND (
+	          user_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR user_nickname LIKE CONCAT('%', #{keyword}, '%')
+	          OR user_email LIKE CONCAT('%', #{keyword}, '%')
+          )
+        </if>
+    </where>
+    ORDER BY delete_dt ${sort}
+       LIMIT #{offset}, #{display}
+  </select>
+  
+  <!-- 탈퇴 로그 검색 결과 갯수 -->
+  <select id="selectDeleteLogSearchListCount" parameterType="map" resultType="int">
+    SELECT COUNT(*)
+      FROM tbl_delete_user_log
+    <where>
+        <if test="search == 'name'">user_name LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'nickname'">AND user_nickname LIKE CONCAT('%', #{keyword}, '%')</if> 
+        <if test="search == 'email'">AND user_email LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="startDt != '' and endDt != ''">AND delete_dt BETWEEN #{startDt} AND #{endDt}</if>
+        <if test="search == 'total'">
+          AND (
+	          user_name LIKE CONCAT('%', #{keyword}, '%')
+	          OR user_nickname LIKE CONCAT('%', #{keyword}, '%')
+	          OR user_email LIKE CONCAT('%', #{keyword}, '%')
+          )
+        </if>
+    </where>
+  </select>
+
+</mapper>

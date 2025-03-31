@@ -1,0 +1,24 @@
+/* 관리자 - 대시보드 */
+h2 {
+  text-align: center;
+}
+.admin-dashboard {
+  padding: 20px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.stat-card {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.stat-card > p {
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}

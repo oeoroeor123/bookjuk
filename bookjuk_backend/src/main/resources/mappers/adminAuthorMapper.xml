@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bookjuk.admin.mapper.IAuthorMapper">
+
+    <resultMap type="AuthorDto" id="author">
+      <id column="author_id" property="authorId"/>
+      <result column="author_name" property="authorName"/>
+      <result column="author_birth" property="authorBirth"/>
+      <result column="biography" property="biography"/>
+      <result column="major_works" property="majorWorks"/>
+  </resultMap>
+  
+    <!-- 작가 이름으로 검색 -->
+    <select id="searchAuthorsByName"  parameterType="String" resultType="com.bookjuk.admin.dto.AuthorDto">
+        SELECT author_id AS authorId,
+               author_name AS authorName,
+               author_birth AS authorBirth,
+               biography AS biography,
+               major_works AS majorWorks
+        FROM tbl_author
+        WHERE author_name LIKE CONCAT('%', #{searchAuthor}, '%')
+    </select>
+
+</mapper>

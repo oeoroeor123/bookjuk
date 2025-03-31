@@ -1,0 +1,17 @@
+/* 관리자 - 리뷰 CSS */
+.review-thumbnail {
+  width: 100px;
+  object-fit: contain;
+  border-radius: 5px;
+  /* margin-right: 5px; */
+}
+.left {
+  text-align: left;
+  svg {
+    color: rgb(240, 210, 3);
+  }
+}
+.product-info {
+  font-size: 12px;
+  align-content: center;
+}

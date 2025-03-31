@@ -1,0 +1,32 @@
+/* wrapper-class: 전체 컨테이너 스타일 */
+.wrapper-class {
+  width: 800px;           /* 너비 500px */
+  border: 1px solid #ee0606; /* 연한 회색 외곽선 */
+  padding: 10px;          /* 여백 추가 */
+  margin: 0 auto;         /* 가운데 정렬 */
+}
+
+/* editor: 에디터 영역 스타일 */
+.editor {
+  width: 100%;            /* 부모의 너비에 맞춰서 채우기 */
+  border: 1px solid #ccc; /* 연한 회색 외곽선 */
+  padding: 10px;          /* 여백 추가 */
+  min-height: 300px;      /* 최소 높이 설정 */
+  box-sizing: border-box; /* padding 포함하여 크기 계산 */
+}
+
+/* toolbar-class: 툴바 영역 스타일 */
+.toolbar-class {
+  width: 100%;            /* 툴바도 100% 너비 */
+  border: 1px solid #ccc; /* 툴바의 외곽선 */
+  margin-bottom: 10px;    /* 툴바와 에디터 간 간격 */
+}
+
+/* 뷰어 영역 스타일 */
+.viewer {
+  width: 800px;           /* 뷰어 영역 너비 500px */
+  border: 1px solid #2a08ee; /* 연한 회색 외곽선 */
+  padding: 10px;          /* 여백 추가 */
+  margin: 0 auto;         /* 가운데 정렬 */
+  background-color: #f9f9f9; /* 배경 색상 추가 */
+}

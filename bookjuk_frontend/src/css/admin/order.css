@@ -1,0 +1,81 @@
+/* 관리자 - 주문 관리 페이지 CSS */
+.center {
+  text-align: center;
+  vertical-align: middle;
+  align-content: center;
+  margin: 0 12px;
+  white-space: pre-wrap;
+}
+.left {
+  text-align: left;
+  vertical-align: middle;
+  align-content: center;
+  white-space: pre-wrap;
+  margin: 0 12px;
+  white-space: pre-wrap;
+}
+.right {
+  text-align: right;
+  vertical-align: middle;
+  align-content: center;
+  margin: 0 12px;
+  white-space: pre-wrap;
+}
+.order-thumbnail {
+  width: 50px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin: 2px 0;
+}
+.order-detail {
+  display: flex;
+  margin: 0 12px;
+}
+.order-detail-product-name {
+  width: 35%;
+  min-width: 80px;
+  white-space: pre-wrap;
+}
+.order-user {
+  font-size: 12px;
+  font-weight: 700;
+}
+.order-date {
+  font-size: 12px;
+}
+.order-status {
+  width: 70px;
+  font-size: 12px;
+}
+.cancel-block {
+  text-align: left;
+  align-content: center;
+  font-size: 12px;
+  display: block;
+  height: 100px;
+}
+.cancel-status {
+  color: #ff4545;
+}
+.cancel-detail {
+  font-size: 14px;
+  height: 30px;
+  margin: 0 12px;
+  button {
+    font-size: 12px;
+    display: inline-block;
+    margin: 0 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+  button:hover {
+    color: chocolate;
+    border: 1px solid gray;
+  }
+}
+
+/* 예: CSS 또는 Tailwind 스타일 */
+.pink-background {
+  background-color: pink;
+}
