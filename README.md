@@ -29,7 +29,7 @@
 ### Infra
 <div>
 <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/AWSEC2.png?raw=true" width="80">
-<imp src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Docker.png?raw=true" width="80">
+<img src="https://raw.githubusercontent.com/yewon-Noh/readme-template/refs/heads/main/skills/Docker.png" width="80">
     
 </div>
 
