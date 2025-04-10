@@ -47,8 +47,7 @@ public class ProductInquiryReply {
   @Column(name = "inquiry_reply_content")
   private String inquiryReplyContent;
 
-  @Column(name = "inquiry_reply_dt", columnDefinition = "DATETIME DEFAULT NOW()",
-      insertable = false)
+  @Column(name = "inquiry_reply_dt", columnDefinition = "DATETIME DEFAULT NOW()", insertable = false)
   private LocalDateTime inquiryReplyDt;
 
 }

@@ -34,8 +34,9 @@ public class ListUserDto {
   private UserRole      userRole;
   private LocalDateTime createDt;
   private LocalDateTime changeDt;
-	public static ListUserDto fromEntity(ListUser user) {
-		return null;
-	}
+	
+  public static ListUserDto fromEntity(ListUser user) {
+    return null;
+  }
 
 }

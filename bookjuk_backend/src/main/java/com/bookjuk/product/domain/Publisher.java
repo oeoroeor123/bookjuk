@@ -34,7 +34,5 @@ public class Publisher {
   @Column(name = "website")
   private String website;
   
-  
-  
 
 }

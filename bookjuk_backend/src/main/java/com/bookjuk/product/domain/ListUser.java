@@ -34,10 +34,7 @@ public class ListUser {
 
   @Column(name = "user_email")
   private String userEmail;
-
-  // @Column(name = "user_pw")
-  // private String userPw;
-
+  
   @Column(name = "user_name")
   private String userName;
 

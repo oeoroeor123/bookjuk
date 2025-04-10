@@ -16,8 +16,8 @@ import lombok.ToString;
 @Builder
 public class SearchDto {
 
-	private Integer       searchId;
-	private String        search;
+  private Integer       searchId;
+  private String        search;
   private Integer       searchCount;
   private LocalDateTime searchDt;
   private Integer       userId;

@@ -6,5 +6,5 @@ import com.bookjuk.product.domain.Genre;
 
 public interface GenreService {
 
-	List<Genre> getAllGenres();
+  List<Genre> getAllGenres();
 }

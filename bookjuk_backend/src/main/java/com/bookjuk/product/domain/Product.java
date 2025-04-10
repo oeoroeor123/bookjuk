@@ -28,19 +28,19 @@ import lombok.ToString;
 @Builder
 public class Product {
 
-	@Id
-	@Column(name = "product_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer productId;
+  @Id
+  @Column(name = "product_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer productId;
 
-	@Column(name = "product_name")
-	private String productName;
+  @Column(name = "product_name")
+  private String productName;
 
-	@Column(name = "description")
-	private String description;
+  @Column(name = "description")
+  private String description;
 
-	@Column(name = "product_price")
-	private Integer productPrice;
+  @Column(name = "product_price")
+  private Integer productPrice;
 	
   @Column(name = "product_image")
   private String productImage;
@@ -48,24 +48,24 @@ public class Product {
   @Column(name = "create_dt")
   private LocalDate createDt;
 
-	@Column(name = "publication_date")
-	private LocalDate publicationDate;
+  @Column(name = "publication_date")
+  private LocalDate publicationDate;
 
-	@Column(name = "total_pages")
-	private Integer totalPages;
+  @Column(name = "total_pages")
+  private Integer totalPages;
 	
-	@Column(name = "stock")
+  @Column(name = "stock")
   private Integer stock;
 	
-	@Column(name = "sales_yn")
-	private String salesYn;
+  @Column(name = "sales_yn")
+  private String salesYn;
 	
   // 장르(Genre)
   @ManyToOne
   @JoinColumn(name = "genre_id")
   private Genre genre;
 
-	// 작가(Author) 
+  // 작가(Author) 
   @ManyToOne
   @JoinColumn(name = "author_id")
   private Author author;

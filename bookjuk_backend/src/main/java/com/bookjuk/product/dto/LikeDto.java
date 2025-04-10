@@ -14,6 +14,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class LikeDto {
+	
   private Integer likeId;
   private ListUserDto user;
   private ProductDto product;

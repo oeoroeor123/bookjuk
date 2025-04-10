@@ -16,11 +16,11 @@ import lombok.RequiredArgsConstructor;
 @Tag(name = "장르", description = "장르 API")
 public class GenreController {
 
-	private final GenreService genreService;
+  private final GenreService genreService;
 	
   @Operation(summary = "장르 목록 조회", description = "장르 목록 조회")
-	@GetMapping(value = "/product/genres", produces = "application/json")
-	public List<Genre> getAllGenres() {
-		return genreService.getAllGenres();
-	}
+  @GetMapping(value = "/product/genres", produces = "application/json")
+  public List<Genre> getAllGenres() {
+    return genreService.getAllGenres();
+  }
 }

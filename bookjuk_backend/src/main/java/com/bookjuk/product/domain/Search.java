@@ -43,5 +43,4 @@ public class Search {
   @Column(name = "user_id")
   private Integer userId;
 
-
 }

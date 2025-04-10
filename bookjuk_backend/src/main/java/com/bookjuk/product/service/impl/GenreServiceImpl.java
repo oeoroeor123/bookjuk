@@ -14,11 +14,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GenreServiceImpl implements GenreService {
 
-	private final GenreListRepository genreListRepository;
+  private final GenreListRepository genreListRepository;
 	
-	@Override
-	public List<Genre> getAllGenres() {
-		return genreListRepository.findAll();
-	}
+  @Override
+  public List<Genre> getAllGenres() {
+	return genreListRepository.findAll();
+  }
 
 }
