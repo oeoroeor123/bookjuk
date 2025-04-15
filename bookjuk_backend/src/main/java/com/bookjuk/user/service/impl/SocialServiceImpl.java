@@ -69,10 +69,10 @@ public class SocialServiceImpl implements SocialService {
    
   }
    
-   @Value("${Naver.redirect-uri}")
+   @Value("${naver.redirect-uri}")
    private String naverRedirectUri;
    
-   @Value("${Naver.token-uri}")
+   @Value("${naver.token-uri}")
    private String naverTokenUri;
    
    @Override

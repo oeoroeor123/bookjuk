@@ -26,7 +26,7 @@ export const postKakao = async (code) => {
   const params = {
     grant_type: 'authorization_code',
     client_id: process.env.REACT_APP_KAKAO_CLIENT_ID,
-    redirect_uri: 'http://localhost:3000/user/kakaoLogin',
+    redirect_uri: process.env.REACT_APP_KAKAO_REDIRECT_URI,
     code: code,
     client_secret: process.env.REACT_APP_KAKAO_CLIENT_SECRET,
   }

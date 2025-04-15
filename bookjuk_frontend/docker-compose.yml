@@ -1,0 +1,43 @@
+# 최근 docker-compose는 버전을 작성하지 않는다.
+# 이전에 사용하던 버전:3.8
+
+#.env 파일과 동일한 경로에 있는 docker-compose.yml 파일은 자동으로 .env 파일을 읽는다.
+# .env 파일을 잘 읽었는지 확인하려면 docker-compose config 명령을 내린다. (커맨드에 작성)
+services:
+  backend:
+    container_name: backend-container
+    build: # Dockerfile을 이용한 도커 이미지 빌드
+      context: ./bookjuk_backend # Dockerfile이 존재하는 경로
+      args: # backend > Dockerfile > ARG SPRING_API_KEY로 보내는 값
+        #아래의 값 = ${} 들은 .env 파일에서 읽은 값
+        - IMGBB_APP_KEY=${IMGBB_APP_KEY}
+        - KAKAO_CLIENT_ID=${KAKAO_CLIENT_ID}
+        - KAKAO_CLIENT_SECRET=${KAKAO_CLIENT_SECRET}
+        - NAVER_CLIENT_ID=${NAVER_CLIENT_ID}
+        - NAVER_CLIENT_SECRET=${NAVER_CLIENT_SECRET}
+        - PORTONE_SECRET_API=${PORTONE_SECRET_API}
+        - PORTONE_SECRET_WEBHOOK=${PORTONE_SECRET_WEBHOOK}
+    
+    ports:
+      - "8080:8080"
+#    environment:
+#      SPRING_API_KEY: ${SPRING_API_KEY}
+  frontend:
+    container_name: front-container
+    build: 
+      context: ./bookjuk_frontend
+      args:
+        - REACT_APP_PORT_ONE_STOREID=${REACT_APP_PORT_ONE_STOREID}  # from boot_react_app/.env
+        - REACT_APP_PORT_ONE_KACAO_CHANNELKEY=${REACT_APP_PORT_ONE_KACAO_CHANNELKEY}
+        - REACT_APP_PORT_ONE_KG_CHANNELKEY=${REACT_APP_PORT_ONE_KG_CHANNELKEY}
+        - REACT_APP_KAKAO_CLIENT_ID=${REACT_APP_KAKAO_CLIENT_ID}
+        - REACT_APP_KAKAO_CLIENT_SECRET=${REACT_APP_KAKAO_CLIENT_SECRET}
+        - REACT_APP_KAKAO_REDIRECT_URI=${REACT_APP_KAKAO_REDIRECT_URI}
+        - REACT_APP_NAVER_CLIENT_ID=${REACT_APP_NAVER_CLIENT_ID}
+        - REACT_APP_NAVER_CALLBACK_URI=${REACT_APP_NAVER_CALLBACK_URI}
+    ports:
+      - "80:80"
+    environment:
+      WAIT_HOSTS: backend:8080
+    depends_on:
+      - backend

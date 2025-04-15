@@ -4,25 +4,19 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookjuk.config.KeyStore;
 import com.bookjuk.model.dto.UserRole;
-
 import com.bookjuk.user.dto.UserDto;
-import com.bookjuk.user.model.CustomUserDetails;
 import com.bookjuk.user.service.SocialService;
 import com.bookjuk.user.service.UserService;
 
-import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -32,7 +26,22 @@ public class SocialController {
   private final UserService userService; 
   private final SocialService socialService;
   private final BCryptPasswordEncoder bCryptPasswordEncoder;
-  
+  private final KeyStore keyStore;
+
+  @GetMapping("/api/config/keystore")
+  public ResponseEntity<Map<String, String>> getKeyStoreValues() {
+      return ResponseEntity.ok(Map.of(
+        "portoneSecretApi", keyStore.getPortoneSecretApi(),
+        "portoneSecretWebhook", keyStore.getPortoneSecretWebhook(),
+        "kakaoClientId", keyStore.getKakaoClientId(),
+        "kakaoClientSecret", keyStore.getKakaoClientSecret(),
+        "naverClientId", keyStore.getNaverClientId(),
+        "naverClientSecret", keyStore.getNaverClientSecret(),
+        "naverRedirectUri", keyStore.getNaverRedirectUri(),
+        "imgbbAppKey", keyStore.getImgbbAppKey()
+      ));
+  }
+
   
   @GetMapping("/api/user/kakao")
   public Map<String, Object> kakaoLogin(@RequestParam(name = "accessToken") String accessToken) {
@@ -44,7 +53,7 @@ public class SocialController {
   public ResponseEntity<Map<String, Object>> getnaverLogin(@RequestBody Map<String, Object> request) {
     String code = (String) request.get("code");
     String state = (String) request.get("state");
-    /*System.out.println("code:" + code);
+    /*System.out.println("code:" + code);s
     System.out.println("state:" + state);*/
     Map<String, Object> response = socialService.getNaverToken(code, state);
     return ResponseEntity.status(HttpStatus.OK).body(response);
